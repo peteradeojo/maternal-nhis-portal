@@ -1,0 +1,10 @@
+$colors: 0 140 100;
+$themeColor: rgb($colors);
+
+@mixin theme {
+    background-color: rgb($colors);
+}
+
+.bg-theme {
+    @include theme;
+}

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PatientsController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (Request $request) {
+    return view('dashboard', ['user' => $request->user()]);
+})->middleware(['auth:sanctum'])->name('dashboard');
+
+Route::any('login', [AuthController::class, 'login'])->name('login');
+Route::any('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth', 'auth:sanctum'])->group(function () {
+    Route::prefix('patients')->group(function () {
+        Route::get('/', [PatientsController::class, 'index'])->name('patients');
+    });
+
 });

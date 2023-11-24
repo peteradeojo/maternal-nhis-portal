@@ -1,0 +1,32 @@
+$basePadding: 4px;
+
+.container {
+    padding: 16px 24px;
+    margin: 0 auto;
+}
+
+@for $i from 1 through 20 {
+    .p-#{$i} {
+        padding: $basePadding * $i;
+    }
+    .pt-#{$i} {
+        padding-top: $basePadding * $i;
+    }
+    .pb-#{$i} {
+        padding-bottom: $basePadding * $i;
+    }
+    .pl-#{$i} {
+        padding-left: $basePadding * $i;
+    }
+    .pr-#{$i} {
+        padding-right: $basePadding * $i;
+    }
+    .px-#{$i} {
+        padding-right: $basePadding * $i;
+        padding-left: $basePadding * $i;
+    }
+    .py-#{$i} {
+        padding-top: $basePadding * $i;
+        padding-bottom: $basePadding * $i;
+    }
+}

@@ -1,0 +1,46 @@
+@use './components/colors';
+@use './components/spacing';
+@use './components/button';
+@use './components/forms';
+@use './components/responsive';
+@use './components/nav';
+@use './components/cards';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    #sidenav {
+        width: 15%;
+    }
+
+    main {
+        margin-left: 15%;
+        width: 85%;
+    }
+
+    font: 14px/1.5 Arial,
+    "Helvetica",
+    sans-serif;
+}
+
+a {
+    color: inherit;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+        border: 1px solid #000;
+    }
+
+    td {
+        padding: 4px 8px;
+    }
+}
