@@ -14,7 +14,7 @@ class PatientsController extends Controller
 
     public function show(Request $request, $patient)
     {
-        $patient = Patients::withTrashed()->with(['insurance', 'category'])->has('insurance')->where('card_number', $patient)->first();
+        $patient = Patients::withTrashed()->with(['insurance', 'category'])->has('insurance')->find($patient);
         if (!$patient) {
             return redirect()->to(route('dashboard'))->withErrors("Patient not found.");
         }

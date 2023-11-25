@@ -18,7 +18,7 @@
                     <td>{{ $p->name }}</td>
                     <td>{{ $p->category->name }}</td>
                     <td>{{ $p->card_number }}</td>
-                    <td><a href="{{route('patient', $p->card_number)}}">View</a></td>
+                    <td><a href="{{route('patient', $p)}}">View</a></td>
                 </tr>
             @endforeach
         </tbody>

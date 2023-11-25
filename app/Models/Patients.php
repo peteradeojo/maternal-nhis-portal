@@ -15,6 +15,12 @@ class Patients extends Model
     protected $table = "patients";
 
     protected $fillable = [];
+    protected $with = ['insurance'];
+
+    public function gender(): Attribute
+    {
+        return Attribute::make(get: fn ($value) => $value == "0" ? "Female" : "Male");
+    }
 
     public function category()
     {
@@ -26,8 +32,7 @@ class Patients extends Model
         return $this->hasOne(InsuranceProfile::class, 'patient_id');
     }
 
-    public function gender(): Attribute
-    {
-        return Attribute::make(get: fn ($value) => $value == "0" ? "Female" : "Male");
+    public function visits() {
+        return $this->hasMany(Visit::class, 'patient_id');
     }
 }

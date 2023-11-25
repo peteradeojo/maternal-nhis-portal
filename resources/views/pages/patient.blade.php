@@ -22,5 +22,30 @@
                 <a href="" class="btn bg-theme">Verify</a>
             @endif
         </p>
+        <p><b>Registered: </b> {{ $patient->insurance->created_at->format('Y-m-d h:i A') }}</p>
+    </div>
+    <div class="py-2">
+        <h2>Visit History</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Diagnosis</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($patient->visits as $visit)
+                    <tr>
+                        <td>{{ $visit->created_at }}</td>
+                        <td></td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="3">No visit records found</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
 @endsection
