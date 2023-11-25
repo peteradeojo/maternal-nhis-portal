@@ -12,7 +12,11 @@
 
 <body>
     <main>
+        @foreach ($errors->all() as $err)
+            {{ $err }}
+        @endforeach
         @yield('content')
     </main>
 </body>
+
 </html>

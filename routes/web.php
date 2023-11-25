@@ -26,6 +26,7 @@ Route::any('logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth', 'auth:sanctum'])->group(function () {
     Route::prefix('patients')->group(function () {
         Route::get('/', [PatientsController::class, 'index'])->name('patients');
+        Route::get('/{patient}', [PatientsController::class, 'show'])->name('patient');
     });
 
 });
