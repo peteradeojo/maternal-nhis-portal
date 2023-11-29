@@ -29,4 +29,7 @@ Route::middleware(['auth', 'auth:sanctum'])->group(function () {
         Route::get('/{patient}', [PatientsController::class, 'show'])->name('patient');
     });
 
+    Route::prefix('visits')->name('visits.')->group(function () {
+        Route::get('/{visit}', [PatientsController::class, 'getPatientVisits'])->name('patient');
+    });
 });

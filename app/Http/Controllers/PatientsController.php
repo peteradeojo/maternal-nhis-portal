@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patients;
+use App\Models\Visit;
 use Illuminate\Http\Request;
 
 class PatientsController extends Controller
@@ -20,5 +21,11 @@ class PatientsController extends Controller
         }
 
         return view('pages.patient', ['patient' => $patient]);
+    }
+
+    public function getPatientVisits(Request $request, Visit $visit)
+    {
+        $visit->load('documentations');
+        return view('pages.visit', ['visit' => $visit]);
     }
 }

@@ -37,7 +37,7 @@
             <tbody>
                 @forelse ($patient->visits as $visit)
                     <tr>
-                        <td>{{ $visit->created_at }}</td>
+                        <td><a href="{{route('visits.patient', $visit)}}">{{ $visit->created_at }}</a></td>
                         <td></td>
                     </tr>
                 @empty
