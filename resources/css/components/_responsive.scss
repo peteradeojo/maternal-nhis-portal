@@ -3,6 +3,15 @@
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
+    &.between {
+        justify-content: space-between;
+    }
+    &.evenly {
+        justify-content: space-evenly;
+    }
+    &.start{
+        align-items: flex-start;
+    }
     &.column {
         flex-direction: column;
     }

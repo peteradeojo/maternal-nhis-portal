@@ -1,4 +1,16 @@
 .card {
-    background-color: #fff;
+    $cardPadding: 8px 6px;
     border-radius: 6px;
+    border: 1px solid #ccc;
+
+    .head {
+        padding: $cardPadding;
+        font-size: larger;
+        font-weight: bold;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .body {
+        padding: $cardPadding;
+    }
 }
