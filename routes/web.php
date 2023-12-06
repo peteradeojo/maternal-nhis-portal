@@ -6,6 +6,7 @@ use App\Http\Controllers\PatientsController;
 use App\Models\Patients;
 use App\Models\Visit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +30,12 @@ Route::get('/', function (Request $request) {
 
     $visits = Visit::with(['patient'])->whereHas('patient', function ($query) {
         $query->has('insurance');
-    })->paginate(20)->withQueryString();
+    });
+
+    if (App::isProduction()) {
+        $visits = $visits->where('created_at', '>', now()->subDay()->format('Y-m-d'));
+    }
+    $visits = $visits->paginate(20)->withQueryString();
 
     return view('dashboard', [
         'user' => $request->user(), 'outpatients' => $outpatients, 'admissions' => $admissions,
